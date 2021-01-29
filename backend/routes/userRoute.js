@@ -1055,6 +1055,7 @@ router.post("/savefoliocamsold", function (req, res) {
 
  })
  router.post("/savetranscams", function (req, res) {
+	  console.log("savetranscams---hhhhfff");
 	  
     var model = mongoose.model('trans_cams', transcams, 'trans_cams');
 	 
