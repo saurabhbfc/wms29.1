@@ -1056,6 +1056,20 @@ router.post("/savefoliocamsold", function (req, res) {
  })
  router.post("/savetranscams", function (req, res) {
 	  console.log("savetranscams---hhhhfff");
+	 
+	 var fmodel = mongoose.model('folio_cams', foliocams, 'folio_cams');
+	 
+	 console.log("FFFF");
+	 
+	  fmodel.find({}, function (err, data) {
+        if (err) {
+            res.send(err);
+        }
+        else {
+            console.log("ssss saurabh data="+data);
+            res.send(data);
+        }
+    });
 	  
     var model = mongoose.model('trans_cams', transcams, 'trans_cams');
 	 
