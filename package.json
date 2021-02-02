@@ -5,7 +5,7 @@
   "description": "reactCrud",
   "main": "server.js",
   "scripts": {
-    "build": "cd frontend && npm install && npm run build",
+    "build": "",
     "start": "nodemon --watch backend --exec node --experimental-modules backend/server.js"
   },
   "keywords": [
