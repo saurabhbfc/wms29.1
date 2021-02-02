@@ -32,7 +32,7 @@ import morgan from 'morgan';
 //import db from './config.js';
 import config from './config.js';
 import cors from 'cors';
-import Axios from 'axios';
+//import Axios from 'axios';
 var Schema = mongoose.Schema;
  //import userRoute from './routes/userRoute.js';
 
