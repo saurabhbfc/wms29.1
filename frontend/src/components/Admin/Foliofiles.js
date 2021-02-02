@@ -48,7 +48,7 @@ function Foliofiles()  {
     setData(list);
     setColumns(columns);
 
-    Axios.post('http://localhost:3001/api/savefoliocams',
+    Axios.post('/api/savefoliocams',
     list ,
     {mode: 'cors'},
     {headers:
@@ -106,7 +106,7 @@ function Foliofiles()  {
     setData(list);
     setColumns(columns);
 
-    Axios.post('http://localhost:3001/api/savefoliokarvy',
+    Axios.post('/api/savefoliokarvy',
     list ,
     {mode: 'cors'},
     {headers:
