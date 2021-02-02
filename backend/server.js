@@ -59,11 +59,12 @@ var Schema = mongoose.Schema;
  
 //dotenv.config();
 
+const app=express();
+
 const __dirname = path.resolve();
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 
-const app=express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
