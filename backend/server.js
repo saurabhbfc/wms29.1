@@ -206,14 +206,14 @@ const cams_transSchema = new Schema({
 
 
 
-router.get("/", async(req, res)=>{
+app.get("/", async(req, res)=>{
  //const users= await User.find({});
   console.log("i am backend ")
   res.send("asdfasd PTTT");
 })
 
 
-router.get("/gettranscams", function (req, res) {
+app.get("/gettranscams", function (req, res) {
     var model = mongoose.model('trans_cams', transcams, 'trans_cams');
     model.find({}, function (err, data) {
         if (err) {
@@ -227,7 +227,7 @@ router.get("/gettranscams", function (req, res) {
 })
 
 
-router.get("/getcamstransdata", function (req, res) {
+app.get("/getcamstransdata", function (req, res) {
     var model = mongoose.model('cams_trans', cams_transSchema, 'cams_trans');
     model.find({}, function (err, data) {
         if (err) {
@@ -239,7 +239,7 @@ router.get("/getcamstransdata", function (req, res) {
     });
 })
 
-router.get("/getsipstpuserwise", function (req, res) {
+app.get("/getsipstpuserwise", function (req, res) {
     var mon = parseInt(req.query.dt);
     var yer = parseInt(req.query.yr);
     var name = req.query.name;
@@ -292,7 +292,7 @@ router.get("/getsipstpuserwise", function (req, res) {
 //});
 })
 
-router.get("/getsipstpall", function (req, res) {
+app.get("/getsipstpall", function (req, res) {
     var mon = parseInt(req.query.dt);
     var yer = parseInt(req.query.yr);
     // const pipeline = [  ///trans_cams
@@ -326,7 +326,7 @@ router.get("/getsipstpall", function (req, res) {
             });
     })
 
-router.get("/gettransactionall", function (req, res) {
+app.get("/gettransactionall", function (req, res) {
     var mon = parseInt(req.query.dt);
     var yer = parseInt(req.query.yr);
               const pipeline = [  ///trans_cams
@@ -373,7 +373,7 @@ router.get("/gettransactionall", function (req, res) {
                        
 })
 
-router.get("/gettransactionuserwise", function (req, res) {
+app.get("/gettransactionuserwise", function (req, res) {
     var mon = parseInt(req.query.dt);
     var yer = parseInt(req.query.yr);
     var name = req.query.name;
@@ -411,7 +411,7 @@ router.get("/gettransactionuserwise", function (req, res) {
                        
 })
 
-router.get("/gettaxsavingall", function (req, res) {
+app.get("/gettaxsavingall", function (req, res) {
     var firstyer = parseInt(req.query.fry);
     var secyer = parseInt(req.query.sry);;
     const pipeline = [  ///trans_cams
@@ -461,7 +461,7 @@ router.get("/gettaxsavingall", function (req, res) {
              
 })
 
-router.get("/getdividendall", function (req, res) {
+app.get("/getdividendall", function (req, res) {
     var name = req.query.name;
     var firstyer = parseInt(req.query.fry);
     var secyer = parseInt(req.query.sry);;
@@ -511,7 +511,7 @@ router.get("/getdividendall", function (req, res) {
              
 })
 
-router.get("/getamclist", function (req, res) {
+app.get("/getamclist", function (req, res) {
     Axios.get('https://prodigyfinallive.herokuapp.com/getUserDetails',
     //{data:{ email:req.body.email}}
     {data:{ email:"sunilguptabfc@gmail.com"}}
@@ -575,7 +575,7 @@ router.get("/getamclist", function (req, res) {
     })
 
 
-router.get("/getfoliolist", function (req, res) {
+app.get("/getfoliolist", function (req, res) {
     Axios.get('https://prodigyfinallive.herokuapp.com/getUserDetails',
     {data:{ email:req.body.email}}
       ).then(function(result) {
@@ -633,7 +633,7 @@ router.get("/getfoliolist", function (req, res) {
     });
     })
 
-    router.get("/getapplicant", function (req, res) {
+    app.get("/getapplicant", function (req, res) {
      var transc = mongoose.model('trans_cams', transcams, 'trans_cams');
      var transk = mongoose.model('trans_karvy', transkarvy, 'trans_karvy');
      var transf = mongoose.model('trans_franklin', transfranklin, 'trans_franklin');
@@ -650,7 +650,7 @@ router.get("/getfoliolist", function (req, res) {
                 });
              });
     })
-    router.get("/getapplicantCAMS", function (req, res) {
+    app.get("/getapplicantCAMS", function (req, res) {
         var transc = mongoose.model('trans_cams', transcams, 'trans_cams');
        // var transk = mongoose.model('trans_karvy', transkarvy, 'trans_karvy');
        // var transf = mongoose.model('trans_franklin', transfranklin, 'trans_franklin');
@@ -668,7 +668,7 @@ router.get("/getfoliolist", function (req, res) {
                 });
        })
 
-    router.get("/getschemetype", function (req, res) {
+    app.get("/getschemetype", function (req, res) {
      var transc = mongoose.model('trans_cams', transcams, 'trans_cams');
           var transk = mongoose.model('trans_karvy', transkarvy, 'trans_karvy');
             var transf = mongoose.model('trans_franklin', transfranklin, 'trans_franklin');
@@ -694,7 +694,7 @@ router.get("/getfoliolist", function (req, res) {
        // });
        })
     
-    router.get("/getportfolio", function (req, res) {
+    app.get("/getportfolio", function (req, res) {
         var camsn = mongoose.model('cams_nav', navcams, 'cams_nav');    
         
         const pipeline1 = [  ///trans_karvy
@@ -743,7 +743,7 @@ router.get("/getfoliolist", function (req, res) {
   });
 })
    
-  router.get("/getpan", function (req, res) {  
+  app.get("/getpan", function (req, res) {  
     const pipeline = [  //trans_cams
         {"$match" : {INV_NAME:req.query.name}}, 
          {"$group" : {_id : {PAN:"$PAN", INV_NAME:"$INV_NAME"}}}, 
@@ -793,7 +793,7 @@ router.get("/getfoliolist", function (req, res) {
 //           }
 //       });
 // })
-    router.get("/getfolio", function (req, res) {
+    app.get("/getfolio", function (req, res) {
           var transc = mongoose.model('trans_cams', transcams, 'trans_cams'); 
          // var transk = mongoose.model('trans_karvy', transkarvy, 'trans_karvy');               
                transc.find({"INV_NAME":req.query.name}).distinct("FOLIO_NO", function (err, data) {
@@ -836,7 +836,7 @@ router.get("/getfoliolist", function (req, res) {
         });
   })
 
-  router.get("/getfoliodetail", function (req, res) {
+  app.get("/getfoliodetail", function (req, res) {
     var transc = mongoose.model('trans_cams', transcams, 'trans_cams'); 
     var transk = mongoose.model('trans_karvy', transkarvy, 'trans_karvy'); 
     var folioc = mongoose.model('folio_cams', foliocams, 'folio_cams');   
@@ -888,7 +888,7 @@ router.get("/getfoliolist", function (req, res) {
 })
 
        
-    router.get("/getschemelist", function (req, res) {
+    app.get("/getschemelist", function (req, res) {
         Axios.get('https://prodigyfinallive.herokuapp.com/getUserDetails',
         {data:{ email:req.body.email}}
           ).then(function(result) {
@@ -962,7 +962,7 @@ router.get("/getfoliolist", function (req, res) {
         });
         })
 
-router.get("/getfoliocams", function (req, res) {
+app.get("/getfoliocams", function (req, res) {
     var model = mongoose.model('folio_cams', foliocams, 'folio_cams');
     model.find({}, function (err, data) {
         if (err) {
@@ -976,7 +976,7 @@ router.get("/getfoliocams", function (req, res) {
 
 
 
-router.post("/savecamsnav", function (req, res) {
+app.post("/savecamsnav", function (req, res) {
     var model = mongoose.model('cams_nav', navcams, 'cams_nav');
     try{
     for (i = 0; i < req.body.length; i++) {
@@ -995,7 +995,7 @@ console.log(e)
 }
 })
 
-router.post("/savecamstrans", function (req, res) {
+app.post("/savecamstrans", function (req, res) {
     var model = mongoose.model('cams_trans', cams_transSchema, 'cams_trans');
     for (i = 0; i < req.body.length; i++) {
         var mod = new model(req.body[i]);
@@ -1011,7 +1011,7 @@ router.post("/savecamstrans", function (req, res) {
     }
 })
 
-router.post("/savefoliocams", function (req, res) {
+app.post("/savefoliocams", function (req, res) {
     var model = mongoose.model('folio_cams', foliocams, 'folio_cams');
     for (i = 0; i < req.body.length; i++) {
         var mod = new model(req.body[i]);
@@ -1027,7 +1027,7 @@ router.post("/savefoliocams", function (req, res) {
     }
 })
 
-router.post("/savefoliocamsold", function (req, res) {
+app.post("/savefoliocamsold", function (req, res) {
     for (i = 0; i < req.body.length; i++) {   
        db.collection('folio_cams').updateMany(
                     { pan_no: req.body[i].pan_no , product: req.body[i].product }, 
@@ -1063,7 +1063,7 @@ router.post("/savefoliocamsold", function (req, res) {
 
  })
 
- router.post("/savetranscams1", function (req, res) {
+ app.post("/savetranscams1", function (req, res) {
     for (i = 0; i < req.body.length; i++) {   
        db.collection('trans_cams').updateMany(
                     { trxnno: req.body[i].trxnno }, 
@@ -1095,7 +1095,7 @@ router.post("/savefoliocamsold", function (req, res) {
 }
 
  })
- router.post("/savetranscams", function (req, res) {
+ app.post("/savetranscams", function (req, res) {
 	  console.log("savetranscams---hhhhfff");
 	 
 	 var fmodel = mongoose.model('folio_cams', foliocams, 'folio_cams');
@@ -1128,195 +1128,17 @@ router.post("/savefoliocamsold", function (req, res) {
     }
 })
 
-router.post("/savefoliokarvy", function (req, res) {
-    var model = mongoose.model('folio_karvy', foliokarvy, 'folio_karvy');
-    for (i = 0; i < req.body.length; i++) {
-        var mod = new model(req.body[i]);
-        mod.save(function (err, data) {
-            if (err) {
-                res.send(err);
-            }
-            else {
-                //res.send({data:"Record has been Inserted..!!"});
-                console.log("foliokarvy="+foliokarvy)
-                console.log(data);
-            }
-        });
-    }
-})
 
-router.post("/savefoliofranklin", function (req, res) {
-    var model = mongoose.model('folio_franklin', foliofranklin, 'folio_franklin');
-    for (i = 0; i < req.body.length; i++) {
-        var mod = new model(req.body[i]);
-        mod.save(function (err, data) {
-            if (err) {
-                res.send(err);
-            }
-            else {
-                //res.send({data:"Record has been Inserted..!!"});
-                console.log("foliokarvy="+foliofranklin)
-                console.log(data);
-            }
-        });
-    }
-})
+app.use(express.static(path.join(__dirname, '/frontend/build')));
+app.get('*', (req, res) =>
+  res.sendFile(path.join(__dirname, '/frontend/build/index.html'))
+);
 
-router.post("/savetranscamsold", function (req, res) {
-    var model = mongoose.model('trans_cams', transcams, 'trans_cams');
-    for (i = 0; i < req.body.length; i++) {
-        var mod = new model(req.body[i]);
-        mod.save(function (err, data) {
-            if (err) {
-                res.send(err);
-            }
-            else {
-                //res.send({data:"Record has been Inserted..!!"});
-                //console.log("foliokarvy="+foliofranklin)
-                console.log(data);
-            }
-        });
-    }
-})
-
-router.post("/savetranskarvy", function (req, res) {
-    var model = mongoose.model('trans_karvy', transkarvy, 'trans_karvy');
-    for (i = 0; i < req.body.length; i++) {
-        var mod = new model(req.body[i]);
-        mod.save(function (err, data) {
-            if (err) {
-                res.send(err);
-            }
-            else {
-              //  res.send({data:"Record has been Inserted..!!"});
-                //console.log("foliokarvy="+foliofranklin)
-                console.log(data);
-            }
-        });
-    }
-})
-
-router.post("/savetransfranklin", function (req, res) {
-    var model = mongoose.model('trans_franklin', transfranklin, 'trans_franklin');
-    for (i = 0; i < req.body.length; i++) {
-        var mod = new model(req.body[i]);
-        mod.save(function (err, data) {
-            if (err) {
-                res.send(err);
-            }
-            else {
-                //res.send({data:"Record has been Inserted..!!"});
-                //console.log("foliokarvy="+foliofranklin)
-                console.log(data);
-            }
-        });
-    }
-})
-
-router.post("/Updatecamsnav", function(req, res) {
-    var model = mongoose.model('cams_nav', cams_navSchema, 'cams_nav');  
-    var i;
-for (i = 0; i < req.body.length; i++) {   
-  // model.find({trxnno : req.body[i].trxnno}).exec(function(err, newdata) {
-  //  if (!newdata.length){   
-        //console.log("length="+newdata.length);  
-        var mod = new model(req.body[i]);
-        mod.save(function (err, data) {
-            if (err) {
-                res.send(err);
-            }
-            else {
-                console.log(data);
-                //res.send({data:"Record has been Inserted..!!"});
-            }
-        });
-
-/*    } else {
-        let folio_no="";
-        var data = { $set:{ "folio_no" : req.body[i].folio_no ,
-            "scheme" : req.body[i].scheme , inv_name : req.body[i].inv_name ,
-            traddate: req.body[i].traddate ,
-            units: req.body[i].units,
-            amount: req.body[i].amount ,
-             trxn_nature: req.body[i].trxn_nature,
-            scheme_type: req.body[i].scheme_type,
-            pan: req.body[i].pan,
-            trxn_type_flag: req.body[i].trxn_type_flag }  }
-            
-        db.cams_nav.update({}, data,{multi:true}, (err , collection) => {
-          if (err) throw err;
-           console.log('Name exists already3='+collection);
-        });
-        
-    }  */
- // });
-}
-
-})
+const port= process.env.PORT ||  3000;
 
 
-//api for Update data from database
-router.post("/Updatedata", function (req, res) {
-    for (i = 0; i < req.body.length; i++) {   
-       db.collection('cams_nav').findAndModify(
-                    {trxnno: req.body[i].trxnno}, // query
-                    [['_id','asc']],  // sort order
-                    {$set: { folio_no : req.body[i].folio_no ,
-                        scheme : req.body[i].scheme ,
-                        inv_name : req.body[i].inv_name ,
-                        traddate: req.body[i].traddate ,
-                        units: req.body[i].units,
-                        amount: req.body[i].amount ,
-                        trxn_nature: req.body[i].trxn_nature ,
-                        scheme_type: req.body[i].scheme_type ,
-                        pan: req.body[i].pan ,
-                        trxn_type_flag: req.body[i].trxn_type_flag 
-                        }}, // replacement, replaces only the field "hi"
-                    {}, // options
-                    function(err, object) {
-                        if (err){
-                            console.warn(err.message);  // returns error if no matching object found
-                        }else{
-                            console.dir("successfully");
-                            //console.dir(object);
-                        }
-                    })
-}
+app.use((err, req, res, next) => {
+	res.status(500).send({ message: err.message });
+  });
 
- })
-
-
-router.get("/emp", function (req, res){
-res.send("Namsstey Saurabh");
-console.log("Namstey Rajesh");
-  })
-
-
- router.post("/Updateinsertdata", function (req, res) {
-    for (i = 0; i < req.body.length; i++) {   
-       db.collection('cams_nav').updateMany(
-                    { name : req.body[i].name}, 
-                      {$set: { name : req.body[i].name ,
-                        pin : req.body[i].pin ,
-                        ages: req.body[i].ages ,
-                        addres : req.body[i].addres ,
-                    }}, 
-                    {
-                        "upsert":true
-                     }, // options
-                    function(err, object) {
-                        if (err){
-                            console.warn(err.message);  // returns error if no matching object found
-                        }else{
-                            console.dir("successfully");
-                            //console.dir(object);
-                        }
-                    })
-                  //  console.dir("qry="+gg)
-}
-
- }) 
- 
- 
-
-export default router;
+app.listen(port, ()=> { console.log("server started at port ",port)})
