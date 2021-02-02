@@ -85,7 +85,6 @@ const mongodbUrl= `mongodb+srv://ankesh123:ankesh123@bookcluster.lqj7y.mongodb.n
 var db=mongoose.connect(mongodbUrl, {
 	useNewUrlParser:true,
 	useUnifiedTopology: true,
-	useMongoClient: true,
 	useCreateIndex:true
 }).catch(error => console.log(error.reason));
 
