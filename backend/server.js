@@ -815,7 +815,7 @@ app.get("/getfoliolist", function (req, res) {
     })
 
 
-    router.get("/getscheme", function (req, res) {
+    app.get("/getscheme", function (req, res) {
         var transc = mongoose.model('trans_cams', transcams, 'trans_cams');             
         //var transk = mongoose.model('trans_karvy', transkarvy, 'trans_karvy');               
         transc.find({"FOLIO_NO":req.query.folio}).distinct("SCHEME", function (err, data) {  
