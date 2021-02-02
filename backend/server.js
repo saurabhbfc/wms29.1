@@ -64,6 +64,17 @@ app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 dotenv.config();
 //const mongodbUrl= config.MONGODB_URL;
 
+
+const options = {
+      useMongoClient: true,
+      autoIndex: false, // Don't build indexes
+      reconnectTries: Number.MAX_VALUE, // Never stop trying to reconnect
+      reconnectInterval: 500, // Reconnect every 500ms
+      poolSize: 10, // Maintain up to 10 socket connections
+      // If not connected, return errors immediately rather than waiting for reconnect
+      bufferMaxEntries: 0
+    };
+
 //const mongodbUrl= process.env.MONGODB_URL || 'mongodb+srv://ankesh123:ankesh123@bookcluster.lqj7y.mongodb.net/wmsdb?authSource=admin&replicaSet=atlas-j3drm8-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true';
 
 const mongodbUrl= `mongodb+srv://ankesh123:ankesh123@bookcluster.lqj7y.mongodb.net/wmsnew?authSource=admin&replicaSet=atlas-j3drm8-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true`;
@@ -74,6 +85,7 @@ const mongodbUrl= `mongodb+srv://ankesh123:ankesh123@bookcluster.lqj7y.mongodb.n
 var db=mongoose.connect(mongodbUrl, {
 	useNewUrlParser:true,
 	useUnifiedTopology: true,
+	useMongoClient: true,
 	useCreateIndex:true
 }).catch(error => console.log(error.reason));
 
