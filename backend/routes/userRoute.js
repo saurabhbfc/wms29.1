@@ -20,17 +20,17 @@ const router=express.Router();
 //User Data Seed
 
 
-const mongodbUrl= `mongodb+srv://ankesh123:ankesh123@bookcluster.lqj7y.mongodb.net/wmsnew?authSource=admin&replicaSet=atlas-j3drm8-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true`;
+// const mongodbUrl= `mongodb+srv://ankesh123:ankesh123@bookcluster.lqj7y.mongodb.net/wmsnew?authSource=admin&replicaSet=atlas-j3drm8-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true`;
 
 
-//const mongodbUrl= process.env.MONGODB_URL;
+// //const mongodbUrl= process.env.MONGODB_URL;
 
-var db=mongoose.connect(mongodbUrl, {
-	useNewUrlParser:true,
-	useUnifiedTopology: true,
-	useMongoClient: true,
-	useCreateIndex:true
-}).catch(error => console.log(error.reason));
+// var db=mongoose.connect(mongodbUrl, {
+// 	useNewUrlParser:true,
+// 	useUnifiedTopology: true,
+// 	useMongoClient: true,
+// 	useCreateIndex:true
+// }).catch(error => console.log(error.reason));
 
  
  
